@@ -16,9 +16,9 @@ digito [0-9]
 letra [a-zA-Z_]
  /* TODO 3 — Definir 'identificador' usando {letra} y {digito}
    Pista: empieza con {letra}, seguido de cero o más ({letra}|{digito}) */
-identificador {letra}({letra}{digito})*
+identificador {letra}({letra}|{digito})*
 %%
-
+ 
  /* ── Reglas usando las definiciones ─────────────────────────────────── */
 
  /* Regla ya dada como ejemplo: usa {digitoHexa} y muestra yyleng */
@@ -27,7 +27,7 @@ identificador {letra}({letra}{digito})*
  /* TODO 4 — Regla para constante decimal usando {digito}
    Pista: empieza con dígito 1-9 (no cero), seguido de cero o más {digito}
    Acción esperada: printf("constante decimal de longitud %d: %s\n", yyleng, yytext);    */
-[1-9]{digito}+ {printf("constante decimal de longitud: %d: %s\n", yyleng, yytext);}
+[1-9]{digito}* {printf("constante decimal de longitud: %d: %s\n", yyleng, yytext);}
  /* TODO 5 — Regla para identificador usando {identificador}
    Acción esperada: printf("identificador de longitud %d: %s\n", yyleng, yytext);        */
 {identificador} {printf("identificador: %d: %s\n", yyleng, yytext);}
